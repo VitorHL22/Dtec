@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Analisador de Nomes</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <div class="card">
+    <h1>Analisador de Nomes</h1>
+    <div id="resultado"></div>
+    <button onclick="location.reload()">Reiniciar</button>
+  </div>
+
+  <script>
+    const nome = prompt('Digite seu nome completo:');
+    const resultado = document.getElementById('resultado');
+    resultado.innerHTML += `<strong>Seu nome é:</strong> ${nome}<br>`;
+    resultado.innerHTML += `<strong>Seu nome tem:</strong> ${nome.length}<br>`
+    resultado.innerHTML += `<strong>A segunda letra do seu nome:</strong> ${nome[1]}<br>`
+    resultado.innerHTML += `<strong>O índice da primeira ocorrência da letra V:</strong> ${nome.indexOf("v")}<br>`
+    resultado.innerHTML += `<strong>O índice da última ocorrência da letra V:</strong> ${nome.lastIndexOf("o")}<br>`
+    resultado.innerHTML += `<strong>As últimas 3 letras do nome:</strong> ${nome.slice(-3)}<br>`
+    resultado.innerHTML += `<strong>As palavras do nome (como array):</strong> ${nome.split("")}<br>`
+    resultado.innerHTML += `<strong>O nome todo em maiúsculas:</strong> ${nome.toUpperCase()}<br>`
+    resultado.innerHTML += `<strong>O nome todo em minúsculas:</strong> ${nome.toLowerCase()}<br>`
+  </script>
+
+</body>
+</html>
