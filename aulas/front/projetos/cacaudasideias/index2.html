@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produtos - Cacau das Ideias</title>
+  
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fef9f6;
+  color: #3e2c1c;
+}
+
+header {
+  background-color: #5e3829;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  gap: 20px;
+}
+a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.boas-vindas{
+    text-align: center;
+}
+.galeria h2{
+    text-align: center;
+    font-size: 2em;
+}
+.galeria{
+   justify-items: center;
+
+}
+img{
+    border-radius: 15px;
+    border-color: #86482f00;
+    width: 400px;
+}
+.cartoes{
+    gap: 20px;
+    justify-content: center;
+    display: flex;
+}
+.produto-card{
+    width: 500px;
+    margin-top: 20px;
+    padding-top: 15px;
+    gap: 10px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    background-color: white;
+    display: inline-block
+  
+}
+.produto-card:hover{
+    background-color: #86472fb0;
+    transform: scale(1.1);
+
+}
+
+span{
+    font-size: 1.5em;
+}
+footer{
+    background-color: #5e3829;
+    color: white;
+    text-align: center;
+    height: 60px;
+    padding: 10px;
+    margin-top: 100px;
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Produtos </h1>
+    <nav>
+      <a href="index.html">Voltar ao Início</a>
+    </nav>
+  </header>
+
+  <main class="produtos-grid">
+    <section>
+    <div class="cartoes">
+    <button class="produto-card" onclick="botaoproduto()">
+      <img src="https://cdn.pixabay.com/photo/2013/09/18/18/24/chocolate-183543_1280.jpg" alt=" Trufa">
+      <h3 class="nomeProduto">Trufa de Chocolate</h3>
+      <p class="descricao">Deliciosa trufa com recheio intenso</p>
+      <span class="valor">R$ 5,00</span>
+    </button>
+
+    <button class="produto-card2 produto-card" onclick="botaoproduto2()">
+      <img src="https://cdn.pixabay.com/photo/2013/09/18/18/24/chocolate-183543_1280.jpg" alt=" Bolo Cacau">
+      <h3 class="nomeProduto2">Bolo Cacau Cremoso</h3>
+      <p class="descricao2">Bolo molhadinho com cobertura de chocolate</p>
+      <span class="valor2">R$ 12,00</span>
+    </button>
+    
+    
+    <button class="produto-card3 produto-card" onclick="botaoproduto3()">
+      <img src="https://cdn.pixabay.com/photo/2013/09/18/18/24/chocolate-183543_1280.jpg" alt=" Chocolate Quente">
+      <h3 class="nomeProduto3 ">Chocolate Quente</h3>
+      <p class="descricao3">Bebida quente para dias frios</p>
+      <span class="valor3">R$ 8,00</span>
+    </button>
+
+  </div>
+  
+    </section>
+    <!-- Adicionem mais 3 cards -->
+     <section>
+
+  <div class="cartoes">
+    <button class="produto-card4 produto-card" onclick="botaoproduto4()">
+      <img src="https://cdn.pixabay.com/photo/2013/09/18/18/24/chocolate-183543_1280.jpg" alt=" Pudim">
+      <h3 class="nomeProduto4 ">Pudim</h3>
+      <p class="descricao4">Cremoso com calda de caramelo</p>
+      <span class="valor4">R$ 9,00</span>
+    </button>
+  
+
+    <button class="produto-card5 produto-card" onclick="botaoproduto5()">
+      <img src="https://cdn.pixabay.com/photo/2013/09/18/18/24/chocolate-183543_1280.jpg" alt=" Morango do amor">
+      <h3 class="nomeProduto5 ">Morango do amor</h3>
+      <p class="descricao5">Coberto com crosta crocante de açucar</p>
+      <span class="valor5">R$ 15,00</span>
+    </button>
+ 
+
+    <button class="produto-card6 produto-card" onclick="botaoproduto6()">
+      <img src="https://cdn.pixabay.com/photo/2013/09/18/18/24/chocolate-183543_1280.jpg" alt=" Bolo de pote">
+      <h3 class="nomeProduto6 ">Bolo de pote</h3>
+      <p class="descricao6">Camadas macias e saborosas</p>
+      <span class="valor6">R$ 18,00</span>
+    </button>
+    </div>
+    </section>
+
+
+  </main>
+
+  <div style="width: 100%; text-align: center;">
+    <p class="resultado"></p>
+  </div>
+
+
+  <script src="script.js">
+
+  </script>
+  <footer>
+    <p>&copy; 2025 Cacau das Ideias</p>
+  </footer>
+</body>
+
+</html>

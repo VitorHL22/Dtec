@@ -1,0 +1,67 @@
+ body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    h2 {
+      background: #4caf50;
+      color: white;
+      padding: 10px;
+    }
+    .exercicio {
+      border: 2px dashed #ccc;
+      padding: 15px;
+      margin: 20px 0;
+      background: #fff;
+    }
+    .container {
+      border: 1px solid #999;
+      margin-top: 10px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      justify-content: center;
+       
+    }
+    .item {
+      background: #2196f3;
+      color: white;
+      padding: 10px;
+      margin: 5px;
+      width: 90vh;
+      
+      height: auto;
+      text-align: center;
+    }
+    .containerex1{
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 10px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+    }
+    .containerex2{
+      border: 1px solid #999;
+      margin-top: 10px;
+      padding: 10px;
+      display: flex;
+      align-items: end;
+      height: 20vh;
+      justify-content: right;
+    }
+    .containerex3{
+        flex-direction: column;
+        border: 1px solid #999;
+        margin-top: 10px;
+        padding: 10px;
+        flex-direction: column;        
+    }
+    .ex4{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        
+    }
+ 
