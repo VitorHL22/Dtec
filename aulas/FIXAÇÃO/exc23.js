@@ -1,0 +1,7 @@
+const n = Number(prompt("Digite um número;"))
+alert(Math.sqrt(n))
+alert(Math.pow(n))
+alert(Math.round(n))
+console.log(Math.sqrt(n))
+console.log(Math.pow(n))
+console.log(Math.round(n))

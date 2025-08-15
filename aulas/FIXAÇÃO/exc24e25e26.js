@@ -1,0 +1,11 @@
+const lista = ["arroz", "feijão", "sofa"]
+console.log(lista[0])
+console.log(lista[lista.length - 1])
+lista.push("melao")
+console.log(lista)
+lista.shift(0)
+console.log(lista)
+const item = prompt("digite um item:")
+lista.push(item)
+alert(lista)
+alert(lista.length)
