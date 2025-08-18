@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-rows: auto 1fr auto;
+            gap: 12px; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container grid-areas">
+        <header class="area header">HEADER</header>
+        <aside class="area sidebar">SIDEBAR</aside>
+        <section class="area content">CONTENT</section>
+        <footer class="area footer">FOOTER</footer>
+    </div>
+</body>
+
+</html>
