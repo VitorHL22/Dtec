@@ -1,0 +1,155 @@
+
+/* =========================================================
+   RESET BÁSICO (SIMPLIFICADO) + BASE GLOBAL
+   (Mantém intencionalmente algumas escolhas ruins de UX)
+   ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* inclui padding e border no cálculo do box */
+}
+
+body {
+    font-family: Arial;
+    margin: 0px;
+    padding: 0px;
+    background: #d1eeaa;
+    /* fundo esverdeado (pouco usual) */
+    color: #999;
+    /* contraste ruim proposital */
+}
+
+/* Links com estilo "simples" para evidenciar UX ruim */
+a {
+    color: inherit;
+    text-decoration:dotted;
+}
+
+/* Listas “zeradas” */
+ul,
+ol {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Imagens responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================================================
+   HEADER / NAV (Problemas propositais: fontes pequenas, contraste)
+   ========================================================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    /* pouco espaçamento */
+    background: #4b4040;
+    /* fundo escuro acinzentado */
+    border-bottom: 1px solid #ddd;
+}
+
+header nav a {
+    font-size: 8px;
+    text-decoration: none;
+    color: #e360e7;
+    /* cor sem contraste adequado */
+}
+.logo img {
+    height: 40px;
+}
+
+/* =========================================================
+   HERO (texto pequeno, botão pequeno, contraste fraco)
+   ========================================================= */
+.hero {
+    background: #eee;
+    padding: 12px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 16px;
+    /* pequeno para um título */
+    color: #777;
+    /* cinza médio = contraste fraco */
+}
+
+.search-btn {
+    background: #ff38ee;
+    /* cor vibrante sem paleta consistente */
+    color: rgb(241, 203, 203);
+    /* contraste ruim */
+    padding: 4px 8px;
+    /* botão minúsculo (tocar no mobile é difícil) */
+    border: none;
+    border-radius: 2px;
+}
+
+/* =========================================================
+   LISTA / GRID (grade fixa e desbalanceada)
+   - Grid fixo com 5 colunas SEM responsividade
+   - Gaps e margens inconsistentes
+   ========================================================= */
+.lista {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    /* 5 colunas fixas: ruim em telas pequenas */
+    margin: 10px;
+    gap: 7px;
+    /* espaçamento “mágico” inconsistente */
+}
+
+/* =========================================================
+   CARD (tipografia pequena e preço com baixo contraste)
+   ========================================================= */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 10px;
+    /* MUITO pequeno para leitura confortável */
+    background: #fff;
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.preco {
+    color: #bbb;
+    /* quase invisível */
+    font-size: 11px;
+    /* pequeno */
+}
+
+/* =========================================================
+   BOTÃO DE RESERVA (área de toque pequena, sem feedback)
+   ========================================================= */
+.reserve {
+    background: #dbfaf5;
+    /* botão sem contraste */
+    border: 1px solid #ccc;
+    padding: 3px 6px;
+    /* área de toque minúscula */
+    margin-top: 2px;
+}
+
+/* =========================================================
+   FOOTER (contraste ruim, tipografia pequena)
+   ========================================================= */
+footer {
+    background: #aea7c0;
+    text-align: center;
+    font-size: 10px;
+    /* pequeno */
+    color: #aaa;
+    /* contraste baixo */
+    padding: 5px;
+}

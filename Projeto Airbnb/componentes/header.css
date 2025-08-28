@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+    border-radius: 10px;
+    /* pouco espaçamento */
+    background: #bbbaba75;
+    /* fundo escuro acinzentado */
+    border-bottom: 1px solid #ddd;
+}
+header nav a {
+    top: 13px;
+    position: relative;
+    font-size: 18px;
+    margin: 10px;
+    text-decoration: none;
+    color: #ff385c;
+}

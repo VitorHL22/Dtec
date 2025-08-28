@@ -1,0 +1,22 @@
+.search-btn {
+    background: #ff385c;
+    /* cor vibrante sem paleta consistente */
+    color: white;
+    /* contraste ruim */
+    padding: 10px 20px;
+    /* botão minúsculo (tocar no mobile é difícil) */
+    border: none;
+    border-radius: 20px;
+}
+.reserve {
+    background: white;
+    width: 200px;
+    color: black;
+    border: 1px solid #000000;
+    padding: 10px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+    margin-left: 10px;
+}
+

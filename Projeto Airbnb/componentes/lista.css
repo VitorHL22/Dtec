@@ -1,0 +1,21 @@
+
+/* Links com estilo "simples" para evidenciar UX ruim */
+a {
+    color: inherit;
+    text-decoration:dotted;
+}
+
+/* Listas “zeradas” */
+ul,
+ol {
+    list-style: none;
+    padding-left: 0;
+}
+.lista {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    /* 5 colunas fixas: ruim em telas pequenas */
+    margin: 10px;
+    gap: 7px;
+    /* espaçamento “mágico” inconsistente */
+}

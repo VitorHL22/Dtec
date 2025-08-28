@@ -1,0 +1,23 @@
+.card {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 7px;
+    /* MUITO pequeno para leitura confortável */
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    margin-left: 57px;
+}
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.card h3{
+    font-size: 20px;
+}
+.preco{
+    color: black;
+    font-size: 20px;
+}
