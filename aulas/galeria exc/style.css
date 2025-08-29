@@ -1,0 +1,69 @@
+:root {
+        --bg: #0f172a;
+        --panel: #0b1220;
+        --line: #334155;
+        --txt: #e5e7eb;
+        --muted: #94a3b8;
+        --acc: #60a5fa
+    }
+
+    body{
+        background-color: var(--bg);
+        display: flex;
+        justify-content: center;
+
+    }
+    .grid {
+        display: grid;
+       
+       /*  grid-template-columns: 1fr 1fr 1fr 1fr; */
+        row-gap: 10px;
+        column-gap: 10px;
+    }
+
+    .card {
+        margin-top: 20px;
+        border: 1px solid var(--muted);
+        border-radius: 10px;
+        width: 250px;
+        background: var(--panel);
+        align-items: center;
+        justify-content: center;
+        text-align: left
+
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .meta {
+        margin-left: 10px;
+        color: var(--txt);
+    }
+
+    .muted {
+        color: var(--muted);
+    }
+    .pill{
+        border-radius: 15px;
+        padding: 7px 10px;
+        border: 1px solid var(--muted);
+        color: var(--muted);
+        background: var(--bg);
+    }
+    .pill[aria-pressed="true"]{
+        background: var(--acc) ;
+        color: white;
+        border-color: transparent;
+    }
+    .wrap h1{
+        color: white;
+        font-size: 25px;
+    }
+    .hidden{
+        display: none !important;
+    }
