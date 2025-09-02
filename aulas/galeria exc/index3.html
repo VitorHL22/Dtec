@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <h1> Galeria com Filtros — Lite</h1>
+        <p class="mutano">Marque 1+ categorias, busque por título, ordewne e favorite imagens⭐</p>
+
+        <!-- Botões -->
+        <div id="filtros" class="filters" role="toolbar" aria-label="Filtros">
+            <label class="filtro"><input type="checkbox" value="Natureza" checked> Natureza</label>
+            <label class="filtro"><input type="checkbox" value="Pessoas" checked> Pessoas</label>
+            <label class="filtro"><input type="checkbox" value="Cidades" checked> Cidades</label>
+            <label class="filtro"><input type="checkbox" value="Animais" checked> Animais</label>
+            <input type="text" class="pesquisar" placeholder="Buscar por título...">
+            <button class="botao">limpar</button>
+            <select id="escolha">
+                <option value="az">A → Z</option>
+                <option value="za">Z → A</option>
+                <option value="favoritos">Favoritos primeiro</option>
+            </select>
+        </div>
+
+
+        <!-- Galeria -->
+        <main id="grid" class="grid" aria-live="polite">
+            <!-- Natureza -->
+            <article class="card" data-category="natureza">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop"
+                    alt="Montanhas ao amanhecer" />
+                <div class="meta">
+                  <div><strong>Montanhas ao amanhecer</strong><br><span class="muted">Natureza</span></div>
+                 <button class="favoritar" aria-label="Favoritar imagem">⭐</button>
+                 <div class="light">
+            </article>
+            <article class="card" data-category="natureza">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"
+                    alt="Floresta densa" />
+                <div class="meta"><strong>Floresta densa</strong><br><span class="muted">Natureza</span></div>
+                                 <button class="favoritar" aria-label="Favoritar imagem">⭐</button>
+                 <div class="light">
+            </article>
+            <article class="card" data-category="pessoas">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop"
+                    alt="Retrato urbano" />
+                <div class="meta"><strong>Retrato Urbano</strong><br><span class="muted">Pessoas</span></div>
+                                 <button class="favoritar" aria-label="Favoritar imagem">⭐</button>
+                 <div class="light">
+            </article>
+            <article class="card" data-category="pessoas">
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop"
+                    alt="Estudo e foco" />
+                <div class="meta"><strong>Estudo e Foco</strong><br><span class="muted">Pessoas</span></div>
+                                 <button class="favoritar" aria-label="Favoritar imagem">⭐</button>
+                 <div class="light">
+            </article>
+            <article class="card" data-category="cidades">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop"
+                    alt="Noite na cidade" />
+                <div class="meta"><strong>Noite na Cidade</strong><br><span class="muted">Cidades</span></div>
+                                 <button class="favoritar" aria-label="Favoritar imagem">⭐</button>
+                 <div class="light">
+            </article>
+            <article class="card" data-category="cidades">
+                <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200&auto=format&fit=crop"
+                    alt="Arquitetura moderna" />
+                <div class="meta"><strong>Arquitetura Moderna</strong><br><span class="muted">Cidades</span></div>
+                                 <button class="favoritar" aria-label="Favoritar imagem">⭐</button>
+                 <div class="light">
+            </article>
+            </article>
+            <article class="card" data-category="animais">
+                <img src="https://media.istockphoto.com/id/1358101188/pt/foto/curious-kitten-with-his-paws-touching-the-camera.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZEYGhpbGmTmSVzCXZqQHP1X90eADyRYeZmg9O8RuD9A="
+                    alt="Arquitetura moderna" />
+                <div class="meta"><strong>Gatinho Curioso</strong><br><span class="muted">Animais</span></div>
+                                 <button class="favoritar" aria-label="Favoritar imagem">⭐</button>
+                 <div class="light">
+            </article>
+            </article>
+            <article class="card" data-category="animais">
+                <img src="https://media.istockphoto.com/id/1213401786/pt/foto/mutt-dog-lying-on-bed.webp?a=1&b=1&s=612x612&w=0&k=20&c=Q8SofOautQepp9BFCI59TKlIEHib3qsfxRrn8QcDEpQ="
+                    alt="Arquitetura moderna" />
+                <div class="meta"><strong>Cão Aventureiro</strong><br><span class="muted">Animais</span></div>
+                                 <button class="favoritar" aria-label="Favoritar imagem">⭐</button>
+                 <div class="light">
+            </article>
+
+        </main>
+    </div>
+</body>
+<script src="script3.js"></script>
+
+</html>

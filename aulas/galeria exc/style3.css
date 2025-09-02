@@ -1,0 +1,135 @@
+:root {
+    --bg: #0f172a;
+    --panel: #0b1220;
+    --line: #334155;
+    --txt: #e5e7eb;
+    --muted: #94a3b8;
+    --acc: #60a5fa
+}
+
+body {
+    background-color: var(--bg);
+    display: flex;
+    justify-content: center;
+}
+.filters {
+    padding-left: 100px;
+    display: flex;
+    gap: 15px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    row-gap: 10px;
+    column-gap: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.filtro {
+    border: 1px solid white;
+    border-radius: 17px;
+    padding: 6px 12px;
+    background: var(--panel);
+    color: var(--muted);
+}
+
+.card {
+    margin-top: 20px;
+    border: 1px solid var(--muted);
+    border-radius: 10px;
+    background: var(--panel);
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.meta {
+    margin-left: 10px;
+    color: var(--txt);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mutano {
+    color: var(--muted);
+    padding-left: 100px;
+}
+
+.muted {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.pill {
+    border-radius: 15px;
+    padding: 7px 10px;
+    border: 1px solid var(--muted);
+    color: var(--muted);
+    background: var(--bg);
+}
+
+.pill[aria-pressed="true"] {
+    background: var(--acc);
+    color: white;
+    border-color: transparent;
+}
+
+.wrap h1 {
+    color: white;
+    font-size: 25px;
+    padding-left: 100px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+select {
+    border-radius: 10px;
+    background: var(--panel);
+    color: var(--txt);
+    padding: 7px 30px;
+    display: flex;
+}
+
+#escolha option {
+    background: var(--panel);
+    text-align: left;
+    padding-left: 10px;
+}
+
+.pesquisar {
+    border-radius: 10px;
+    margin-left: 165px;
+    border: 1px solid var(--muted);
+    padding: 7px 15px;
+    color: white;
+    background: var(--panel);
+}
+
+.favoritar {
+    background: var(--panel);
+    border: 1px solid var(--muted);
+    border-radius: 20px;
+}
+
+.botao {
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--muted);
+    padding: 7px 15px;
+    color: var(--panel);
+    background-color: var(--acc);
+}
+
+.hidden {
+    display: none !important;
+}
