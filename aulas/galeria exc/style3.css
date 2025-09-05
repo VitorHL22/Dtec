@@ -4,130 +4,158 @@
     --line: #334155;
     --txt: #e5e7eb;
     --muted: #94a3b8;
-    --acc: #60a5fa
+    --acc: #60a5fa;
+    --fav: #facc15; 
 }
 
 body {
     background-color: var(--bg);
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
 }
-.filters {
+
+.wrap {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.wrap h1 {
+    color: white;
+    font-size: 25px;
+    padding: 20px 100px 10px;
+}
+
+.mutano {
+    color: var(--muted);
     padding-left: 100px;
+    margin-bottom: 20px;
+}
+
+.filters {
+    padding: 0 100px;
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filtro {
+    border: 1px solid var(--muted);
+    border-radius: 17px;
+    padding: 6px 12px;
+    background: var(--panel);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filtro:hover {
+    border-color: var(--acc);
+    color: var(--txt);
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    row-gap: 10px;
-    column-gap: 10px;
-    padding-left: 100px;
-    padding-right: 100px;
-}
-
-.filtro {
-    border: 1px solid white;
-    border-radius: 17px;
-    padding: 6px 12px;
-    background: var(--panel);
-    color: var(--muted);
+    gap: 15px;
+    padding: 0 100px 50px;
 }
 
 .card {
-    margin-top: 20px;
-    border: 1px solid var(--muted);
+    border: 1px solid var(--line);
     border-radius: 10px;
     background: var(--panel);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .card img {
     width: 100%;
     aspect-ratio: 4/3;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0;
 }
 
 .meta {
-    margin-left: 10px;
+    padding: 10px;
     color: var(--txt);
-    margin-top: 10px;
-    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
-}
-
-.mutano {
-    color: var(--muted);
-    padding-left: 100px;
+    align-items: center;
 }
 
 .muted {
     color: var(--muted);
-    margin-bottom: 20px;
-}
-
-.pill {
-    border-radius: 15px;
-    padding: 7px 10px;
-    border: 1px solid var(--muted);
-    color: var(--muted);
-    background: var(--bg);
-}
-
-.pill[aria-pressed="true"] {
-    background: var(--acc);
-    color: white;
-    border-color: transparent;
-}
-
-.wrap h1 {
-    color: white;
-    font-size: 25px;
-    padding-left: 100px;
-}
-
-.hidden {
-    display: none !important;
-}
-
-select {
-    border-radius: 10px;
-    background: var(--panel);
-    color: var(--txt);
-    padding: 7px 30px;
-    display: flex;
-}
-
-#escolha option {
-    background: var(--panel);
-    text-align: left;
-    padding-left: 10px;
-}
-
-.pesquisar {
-    border-radius: 10px;
-    margin-left: 165px;
-    border: 1px solid var(--muted);
-    padding: 7px 15px;
-    color: white;
-    background: var(--panel);
+    font-size: 0.9em;
 }
 
 .favoritar {
     background: var(--panel);
     border: 1px solid var(--muted);
     border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 4px 8px;
+    color: var(--muted);
+}
+
+.favoritar:hover {
+    border-color: var(--acc);
+    color: var(--acc);
+}
+
+.favoritar.fav {
+    border-color: var(--fav);
+    color: var(--fav);
+}
+
+select {
+    border-radius: 10px;
+    background: var(--panel);
+    color: var(--txt);
+    padding: 7px 15px;
+    border: 1px solid var(--muted);
+    cursor: pointer;
+}
+
+#escolha option {
+    background: var(--panel);
+    text-align: left;
+    padding-left: 10px;
+    color: var(--txt);
+}
+
+.pesquisar {
+    border-radius: 10px;
+    margin-left: auto;
+    border: 1px solid var(--muted);
+    padding: 7px 15px;
+    color: var(--txt);
+    background: var(--panel);
+    min-width: 200px;
 }
 
 .botao {
-    margin-left: 10px;
     border-radius: 10px;
     border: 1px solid var(--muted);
     padding: 7px 15px;
     color: var(--panel);
     background-color: var(--acc);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.botao:hover {
+    background-color: #3b82f6;
 }
 
 .hidden {
