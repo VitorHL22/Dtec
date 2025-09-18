@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hazzard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+             background: linear-gradient(to bottom, #f0f0f0, #1a1a1a);
+        }
+
+        .navbar-dark {
+            background-color: black
+        }
+
+        .badge-sale {
+            background-color: #dc3545
+        }
+
+        .badge-new {
+            background-color: #0d6efd
+        }
+
+        .badge-eco {
+            background-color: #198754
+        }
+
+        .product-card img {
+            height: 180px;
+            background-color: #fff;
+            object-fit: contain;
+        }
+
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 15px 0;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .frete {
+            display: flex;
+            color: white;
+            text-shadow: 0 3px black;
+            margin-bottom: 10px;
+            justify-content: center;
+            font-size: 2em;
+        }
+
+        .table-dark th {
+            background-color: black;
+            color: #ffffff;
+        }
+
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #222;
+            color: rgb(0, 0, 0);
+        }
+
+        .table-striped tbody tr:nth-child(even) {
+            background-color: #333;
+            color: #ffcc00;
+        }
+
+        .gratis {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 100px;
+            text-shadow: 0 2px black;
+        }
+
+        .prev11,
+        .next11 {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 2rem;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .prev11:hover,
+        .next11:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+
+        .prev11 {
+            left: 40px;
+        }
+
+        .next11 {
+            right: 40px;
+        }
+        .card-body{
+            background-color: #e9ecef;
+        }
+        .mb-3{
+            color: #ffffff;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Hazzard</a>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Compras</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://picsum.photos/1200/300?random=1" class="d-block w-100" alt="">
+                <div class="carousel-caption">
+                    <h5 class="frete">Frete Grátis</h5>
+                    <p class="gratis">Frete grátis acima de R$ 30,90</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://picsum.photos/1200/300?random=2" class="d-block w-100" alt="">
+                <div class="carousel-caption">
+                    <h5 class="frete">Novos Produtos</h5>
+                    <p class="gratis">Confira nossas novidades!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://picsum.photos/1200/300?random=3" class="d-block w-100" alt="">
+                <div class="carousel-caption">
+                    <h5 class="frete">Super Ofertas</h5>
+                    <p class="gratis">Descontos de até 50%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botões de navegação -->
+        <button class="prev11" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            &#10094;
+        </button>
+        <button class="next11" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            &#10095;
+        </button>
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+    <div class="container my-4">
+        <div class="p-3 bg-light rounded shadow-sm">
+            <h5 class="mb-0">Ofertas de hoje <span class="badge bg-success">-15%</span></h5>
+            <small class="text-muted">Frete grátis acima de R$ 30,90</small>
+        </div>
+    </div>
+
+    <div class="container mb-3">
+        <div class="d-flex gap-2 flex-wrap">
+            <span class="badge bg-primary">Todos</span>
+            <span class="badge bg-secondary">Áudio</span>
+            <span class="badge bg-secondary">Acessórios</span>
+            <span class="badge bg-secondary">Gadgets</span>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages0.kabum.com.br%2Fprodutos%2Ffotos%2F690300%2Ffone-de-ouvido-jbl-tour-pro-3-bluetooth-5-3-smart-charging-case-cancelamento-de-ruido-ate-44-horas-de-bateria-preto-jbltourpro3blk_1735301701_gg.jpg&w=1920&q=75" class="card-img-top" alt="" width="200px" height="200px">
+                    <div class="card-body">
+                        <h6 class="card-title">Fone Pro <span class="badge bg-warning text-dark">Novo</span></h6>
+                        <p class="mb-1">R$ 69,90</p>
+                        <a href="#" class="btn btn-sm btn-primary">Adicionar ao carrinho</a>
+                        <div class="mt-2 d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Favoritar</a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages7.kabum.com.br%2Fprodutos%2Ffotos%2F579717%2Fheadset-gamer-sem-fio-logitech-g-astro-a50-x-lightspeed-base-station-bluetooth-para-xbox-e-ps-preto-939-002126_1715279047_gg.jpg&w=1920&q=75" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h6 class="card-title">Headset X <span class="badge badge-sale">-35%</span></h6>
+                        <p class="mb-1">R$ 559,90</p>
+                        <a href="#" class="btn btn-sm btn-success">Comprar agora</a>
+                        <div class="mt-2 d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Comparar</a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://image01.oneplus.net/ebp/202010/15/1-m00-1b-89-rb8lb1-ikvoax62naagomqfpe0c777.png" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h6 class="card-title">Earbuds Z <span class="badge badge-new">Novo</span></h6>
+                        <p class="mb-1">R$ 79,90</p>
+                        <a href="#" class="btn btn-sm btn-primary">Adicionar</a>
+                        <div class="mt-2 d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Favoritar</a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages9.kabum.com.br%2Fprodutos%2Ffotos%2F747569%2Fcaixa-de-som-aiwa-mini-speaker-rgb-ipx4-bluetooth-5-3-bivolt-preto-aws-sp-03-b_1745330886_gg.jpg&w=1920&q=75" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h6 class="card-title">Speaker Mini</h6>
+                        <p class="mb-1">R$ 139,90</p>
+                        <a href="#" class="btn btn-sm btn-primary">Adicionar ao carrinho</a>
+                        <div class="mt-2 d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Favoritar</a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages5.kabum.com.br%2Fprodutos%2Ffotos%2Fsync_mirakl%2F572175%2Fxlarge%2FCabo-Type-C-X-Type-C-Fast-Charge-100w-1-2mt-Resistente-Cajy000601_1740167444.jpg&w=1920&q=75" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h6 class="card-title">Cabo Fast <span class="badge badge-eco">Eco</span></h6>
+                        <p class="mb-1">R$ 49,90</p>
+                        <a href="#" class="btn btn-sm btn-success">Adicionar</a>
+                        <div class="mt-2 d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Favoritar</a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages1.kabum.com.br%2Fprodutos%2Ffotos%2Fsync_mirakl%2F461331%2FAdaptador-Duplicador-Cabo-De-Rede-Rj45-Ethernet-Splitter-Divisor-Y-preto_1683747513_gg.jpg&w=1920&q=75" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h6 class="card-title">Adaptador Y <span class="badge badge-new">Hot</span></h6>
+                        <p class="mb-1">R$ 19,90</p>
+                        <a href="#" class="btn btn-sm btn-primary">Adicionar</a>
+                        <div class="mt-2 d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Favoritar</a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <h5 class="mb-3">Comprar produtos</h5>
+        <table class="table table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Preço</th>
+                    <th>Desconto</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fone Pro</td>
+                    <td>Áudio</td>
+                    <td>R$ 69,90</td>
+                    <td><span class="badge bg-success">10%</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary">Adicionar</button>
+                        <button class="btn btn-sm btn-danger">Remover</button>
+                        <button class="btn btn-sm btn-outline-secondary">Detalhes</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Headset X</td>
+                    <td>Gadget</td>
+                    <td>R$ 559,90</td>
+                    <td><span class="badge bg-danger">35%</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary">Adicionar</button>
+                        <button class="btn btn-sm btn-danger">Remover</button>
+                        <button class="btn btn-sm btn-outline-secondary">Detalhes</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Earbuds Z</td>
+                    <td>Áudio</td>
+                    <td>R$ 79,90</td>
+                    <td><span class="badge bg-success">5%</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary">Adicionar</button>
+                        <button class="btn btn-sm btn-danger">Remover</button>
+                        <button class="btn btn-sm btn-outline-secondary">Detalhes</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>© 2025 Doc Store</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
