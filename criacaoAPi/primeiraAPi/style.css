@@ -150,3 +150,54 @@ body{
     border-radius: 5px;
     cursor: pointer;
 }
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.logo img {
+    height: 40px;
+}
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    padding-bottom: 5px;
+}
+nav ul li a:hover {
+    border-bottom-color: rgb(84, 80, 80);
+}
+.icons {
+    display: flex;
+    gap: 20px;
+}
+.icons i {
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+.linha-gradiente {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        black 0%,
+        #222 10%,
+        #444 20%,
+        #666 30%,
+        white 50%,
+        grey 70%,
+        white,
+        black 100%
+    );
+}

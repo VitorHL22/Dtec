@@ -1,0 +1,379 @@
+<!DOCTYPE html> <!-- Define o documento como HTML5 -->
+<html lang="pt-BR"> <!-- Início do HTML, idioma definido como português do Brasil -->
+<head>
+<meta charset="UTF-8"> <!-- Define codificação UTF-8 (acentos, caracteres especiais) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Faz a página se ajustar em dispositivos móveis -->
+<title>The Book's On The Table</title> <!-- Título que aparece na aba do navegador -->
+<link rel="shortcut icon" href="favicon.ico"> <!-- Ícone da aba -->
+<link rel="stylesheet" href="logo.png"> <!-- (Incorreto, está tentando carregar logo como CSS, deveria ser <link rel="icon">) -->
+<style>
+/* ---------------- ESTILOS CSS ---------------- */
+body {
+    font-family: 'Roboto', sans-serif; /* Fonte da página */
+    background: linear-gradient(135deg, #2499c7, #f2f5f7); /* Fundo em degradê */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove espaçamento padrão */
+    display: flex; /* Ativa flexbox */
+    flex-direction: column; /* Coloca itens em coluna */
+    justify-content: flex-start; /* Alinha ao topo */
+    align-items: center; /* Centraliza horizontalmente */
+    min-height: 100vh; /* Altura mínima = tela inteira */
+    overflow-x: hidden; /* Remove rolagem horizontal */
+}
+.left-section {
+    display: flex; /* Flexbox */
+    justify-content: space-between; /* Espaço entre logo e menu */
+    align-items: center; /* Alinha no centro */
+    gap: 40px; /* Espaço entre itens */
+    margin: 20px;
+    position: relative;
+    border-bottom: 2px solid black; /* Linha inferior */
+}
+.logo img { height: 60px; } /* Logo com altura de 60px */
+
+nav a {
+    text-decoration: underline; /* Texto sublinhado */
+    text-decoration-color: black;
+    text-decoration-thickness: 1px;
+}
+
+nav ul {
+    display: flex; /* Menu em linha */
+    gap: 25px;
+    align-items: center;
+    list-style: none; /* Remove marcadores da lista */
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+nav ul li { position: relative; }
+nav ul li a {
+    text-decoration: none; /* Remove sublinhado */
+    color: black;
+    font-weight: bold;
+    border-bottom: 2px solid transparent; /* Linha invisível (efeito hover depois) */
+    transition: border-color 0.3s ease; /* Animação suave */
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+nav ul li a:hover { border-bottom-color: black; } /* Aparece sublinhado ao passar o mouse */
+
+/* Dropdown */
+.genre-dropdown {
+    display: none; /* Começa escondido */
+    position: absolute; /* Posicionamento flutuante */
+    top: 30px;
+    left: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 10; /* Fica acima */
+}
+.genre-dropdown div {
+    padding: 8px 12px;
+    cursor: pointer;
+    white-space: nowrap; /* Não quebra linha */
+}
+.genre-dropdown div:hover {
+    background: #2499c7;
+    color: white;
+}
+
+.container {
+    width: 90%; /* Responsivo */
+    max-width: 900px; /* Largura máxima */
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+h1, h2 { text-align: center; color: #333; }
+p { color: #555; text-align: center; }
+.header-buttons { text-align: center; margin-bottom: 20px; }
+button {
+    padding: 10px 18px;
+    margin: 5px;
+    border: none;
+    border-radius: 25px;
+    background: black;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+button:hover { background: #2499c7; }
+
+.cards-grid {
+    display: grid; /* Grid para os cards */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Responsivo */
+    gap: 20px;
+}
+.book-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.book-card:hover {
+    transform: translateY(-5px); /* Efeito levantar */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.book-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.book-card p { margin: 6px 0; font-size: 14px; text-align: center; }
+.card-buttons { display: flex; gap: 10px; margin-top: 10px; }
+.card-buttons button { padding: 6px 12px; border-radius: 20px; font-size: 12px; }
+.btn-edit { background: #2499c7; color:white; }
+.btn-delete { background: #f44336; color:white; }
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+form input, form select { padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+form button { padding: 10px; border-radius: 8px; }
+
+.modal {
+    display: none; /* Escondido até ser aberto */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); /* Fundo escuro */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+.modal-content h2 { margin-top: 0; color: #00796b; }
+.modal-buttons { display: flex; justify-content: space-between; margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<div class="left-section"> <!-- Cabeçalho com logo e menu -->
+    <div class="logo">
+        <img src="logo.png" alt="Logo" />
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <a id="filterGenreBtn">Gênero</a> <!-- Botão do menu -->
+                <div class="genre-dropdown" id="genreDropdown"> <!-- Dropdown de gêneros -->
+                    <div data-genre="Ficção">Ficção</div>
+                    <div data-genre="Romance">Romance</div>
+                    <div data-genre="Suspense">Suspense</div>
+                    <div data-genre="Não Ficção">Não Ficção</div>
+                </div>
+            </li>
+            <li><a href="#">Autor</a></li>
+            <li><a href="mostrar.html">Catálogo</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="container"> <!-- Conteúdo principal -->
+    <h1>Meu Catálogo de Livros</h1>
+    <p>Adicione livros e veja sua coleção!</p>
+
+    <div class="header-buttons">
+        <button id="btnListBooks">Listar Todos</button>
+    </div>
+
+    <div id="book-cards-container" class="cards-grid"></div> <!-- Onde os livros aparecem -->
+
+    <h2>Adicionar Novo Livro</h2>
+    <form id="addBookForm"> <!-- Formulário de adicionar -->
+        <input type="text" id="bookTitle" placeholder="Título do Livro" required>
+        <input type="text" id="bookAuthor" placeholder="Autor" required>
+        <input type="number" id="bookYear" placeholder="Ano de Publicação" required>
+        <select id="bookGenre" required>
+            <option value="">Selecione Gênero</option>
+            <option value="Ficção">Ficção</option>
+            <option value="Romance">Romance</option>
+            <option value="Suspense">Suspense</option>
+            <option value="Não Ficção">Não Ficção</option>
+        </select>
+        <input type="url" id="bookCover" placeholder="URL da Capa">
+        <button type="submit">Adicionar Livro</button>
+    </form>
+</div>
+
+<!-- Modal de edição -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <h2>Editar Livro</h2>
+        <form id="editBookForm">
+            <input type="hidden" id="editId"> <!-- Guarda o ID do livro -->
+            <label for="editTitle">Título:</label>
+            <input type="text" id="editTitle" required>
+            <label for="editAuthor">Autor:</label>
+            <input type="text" id="editAuthor" required>
+            <label for="editYear">Ano:</label>
+            <input type="number" id="editYear" required>
+            <label for="editGenre">Gênero:</label>
+            <select id="editGenre" required>
+                <option value="">Selecione Gênero</option>
+                <option value="Ficção">Ficção</option>
+                <option value="Romance">Romance</option>
+                <option value="Suspense">Suspense</option>
+                <option value="Não Ficção">Não Ficção</option>
+            </select>
+            <label for="editCover">URL da Capa:</label>
+            <input type="url" id="editCover">
+            <div class="modal-buttons">
+                <button type="submit" class="btn-save">Salvar</button>
+                <button type="button" class="btn-cancel" id="btnCancelEdit">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+/* ----------------- JAVASCRIPT ----------------- */
+const API_URL = 'http://localhost:3001/books'; // URL da API
+const bookContainer = document.getElementById("book-cards-container"); // Container dos cards
+const addBookForm = document.getElementById("addBookForm"); // Form de adicionar
+const editBookForm = document.getElementById("editBookForm"); // Form de editar
+const editModal = document.getElementById("editModal"); // Modal
+const btnCancelEdit = document.getElementById("btnCancelEdit"); // Botão cancelar
+
+// Função para listar livros
+async function listBooks(genre=""){ 
+    try{
+        let res = await fetch(API_URL); // Busca todos os livros
+        let books = await res.json(); // Converte em JSON
+        if(genre) books = books.filter(b=>b.genre===genre); // Filtra se houver gênero
+        bookContainer.innerHTML=""; // Limpa a tela
+        books.forEach(book=>{
+            const card=document.createElement("div"); // Cria um card
+            card.classList.add("book-card");
+            card.innerHTML=`
+                <img src="${book.cover||'capa-placeholder.png'}" alt="${book.title}">
+                <p><strong>${book.title}</strong></p>
+                <p>Autor: ${book.author}</p>
+                <p>Ano: ${book.year}</p>
+                <p>Gênero: ${book.genre||'-'}</p>
+                <div class="card-buttons">
+                    <button class="btn-edit">Editar</button>
+                    <button class="btn-delete">Excluir</button>
+                </div>
+            `;
+            card.querySelector(".btn-edit").addEventListener("click", ()=>openEditModal(book.id)); // Evento editar
+            card.querySelector(".btn-delete").addEventListener("click", ()=>deleteBook(book.id)); // Evento excluir
+            bookContainer.appendChild(card); // Adiciona na tela
+        });
+    }catch(err){ console.error(err); }
+}
+
+// Função para abrir modal de edição
+async function openEditModal(id){ 
+    try{ 
+        let res=await fetch(`${API_URL}/${id}`); // Busca o livro pelo ID
+        if(!res.ok) throw new Error(`Erro ${res.status}`);
+        let book=await res.json();
+        document.getElementById("editId").value=book.id; // Preenche campos do modal
+        document.getElementById("editTitle").value=book.title;
+        document.getElementById("editAuthor").value=book.author;
+        document.getElementById("editYear").value=book.year;
+        document.getElementById("editGenre").value=book.genre||"";
+        document.getElementById("editCover").value=book.cover||"";
+        editModal.style.display="flex"; // Mostra modal
+    }catch(err){ alert("Não foi possível abrir o modal."); console.error(err);}
+}
+
+// Salvar edição
+editBookForm.addEventListener("submit", async e=>{
+    e.preventDefault(); // Impede recarregar página
+    const id=document.getElementById("editId").value; // Pega ID
+    const updatedBook={ // Monta objeto atualizado
+        title:document.getElementById("editTitle").value,
+        author:document.getElementById("editAuthor").value,
+        year:document.getElementById("editYear").value,
+        genre:document.getElementById("editGenre").value,
+        cover:document.getElementById("editCover").value
+    };
+    await fetch(`${API_URL}/${id}`,{ // PUT para atualizar
+        method:'PUT',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(updatedBook)
+    });
+    editModal.style.display="none"; // Fecha modal
+    listBooks(); // Atualiza lista
+});
+
+// Cancelar modal
+btnCancelEdit.addEventListener("click", ()=>editModal.style.display="none");
+window.addEventListener("click", e=>{if(e.target===editModal) editModal.style.display="none";});
+
+// Adicionar livro
+addBookForm.addEventListener("submit", async e=>{
+    e.preventDefault();
+    const book={ // Pega valores do form
+        title:document.getElementById("bookTitle").value,
+        author:document.getElementById("bookAuthor").value,
+        year:document.getElementById("bookYear").value,
+        genre:document.getElementById("bookGenre").value,
+        cover:document.getElementById("bookCover").value
+    };
+    try{
+        await fetch(API_URL,{ // POST para criar
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(book)
+        });
+        addBookForm.reset(); // Limpa formulário
+        listBooks(); // Atualiza lista
+    }catch(err){ console.error("Erro ao adicionar livro:", err);}
+});
+
+// Excluir livro
+async function deleteBook(id){
+    if(!confirm("Deseja realmente excluir este livro?")) return; // Confirmação
+    try{
+        await fetch(`${API_URL}/${id}`,{method:'DELETE'}); // DELETE
+        listBooks();
+    }catch(err){ console.error("Erro ao excluir livro:", err);}
+}
+
+// Dropdown de gênero
+const filterBtn = document.getElementById("filterGenreBtn");
+const dropdown = document.getElementById("genreDropdown");
+filterBtn.addEventListener("click", ()=> dropdown.style.display = dropdown.style.display==="block"?"none":"block");
+
+// Filtrar ao clicar no gênero
+dropdown.querySelectorAll("div").forEach(item=>{
+    item.addEventListener("click", ()=>{
+        listBooks(item.dataset.genre); // Filtra pelo gênero
+        dropdown.style.display="none"; // Fecha dropdown
+    });
+});
+
+// Botão listar todos
+document.getElementById("btnListBooks").addEventListener("click", ()=>listBooks());
+
+// Ao carregar página
+window.addEventListener("DOMContentLoaded", ()=>listBooks());
+</script>
+</body>
+</html>

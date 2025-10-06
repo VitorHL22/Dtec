@@ -1,0 +1,44 @@
+{
+  "books": [
+    {
+      "title": "Dom Casmurro",
+      "author": "Machado de Assis",
+      "year": "1899",
+      "genre": "Romance",
+      "cover": "https://cdn.pixabay.com/photo/2025/09/09/19/09/spider-web-9825023_1280.jpg",
+      "id": "1"
+    },
+    {
+      "title": "O Senhor dos Anéis",
+      "author": "J.R.R. Tolkien",
+      "year": "16681",
+      "genre": "Ficção",
+      "cover": "https://cdn.pixabay.com/photo/2025/07/26/20/15/dog-9737540_1280.jpg",
+      "id": "2"
+    },
+    {
+      "title": "uhcsiukchad",
+      "author": "bcsjkbkchs",
+      "year": "18973739",
+      "genre": "Não Ficção",
+      "cover": "https://cdn.pixabay.com/photo/2024/11/22/13/43/autumn-9216501_1280.jpg",
+      "id": "1104"
+    },
+    {
+      "title": "hioefhwij",
+      "author": "bjkqcbkj",
+      "year": "782789",
+      "genre": "Suspense",
+      "cover": "https://cdn.pixabay.com/photo/2018/03/20/09/51/bridge-3242683_1280.jpg",
+      "id": "3051"
+    },
+    {
+      "title": "bhdsfjsdf",
+      "author": "samuel",
+      "year": "2015",
+      "genre": "Romance",
+      "cover": "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+      "id": "90b9"
+    }
+  ]
+}

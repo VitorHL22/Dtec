@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Meu Catálogo de Livros</h1>
+        <p>Adicione livros e veja sua coleção!</p>
+
+        <div class="header-buttons">
+            <button id="btnListBooks">Listar Livros</button>
+        </div>
+
+        <div id="book-cards-container" class="cards-grid"></div>
+
+        <h2>Adicionar Novo Livro</h2>
+        <form id="addBookForm">
+            <input type="text" id="bookTitle" placeholder="Título do Livro" required>
+            <input type="text" id="bookAuthor" placeholder="Autor" required>
+            <input type="number" id="bookYear" placeholder="Ano de Publicação" required>
+            <input type="url" id="bookCover" placeholder="URL da Capa">
+            <button type="submit">Adicionar Livro</button>
+        </form>
+    </div>
+
+    <script src="adm.js"></script>
+    
+</body>
+</html>
