@@ -1,11 +1,21 @@
+require('dotenv').config()
 //Importação do Express
 const express = require('express')
 //Importação do cors
 const cors = require('cors');
 
-//Criar a aplicação
-const app = express();
+//Iniciar o MOngoose pacote
+const mongoose= require('mongoose');
 
+const mongoURI= process.env.MONGO_URI
+
+mongoose.connect(mongoURI)
+    .then(() => console.log("Conectado ao mongoDB"))
+    .catch(err => console.error("Erro de conexão", err))
+
+//Criar a aplicação
+const app = express();  
+        
 //Permitir trabalhar com JSON
 app.use(express.json());
 //Permitir trabalhar com cors
