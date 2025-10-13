@@ -5,6 +5,7 @@ import{TituloFormulario} from '../TitulodeFormulario'
 import {Label} from "../Label"
 import { CampoDeFormulario } from '../CampoDeFormulario'
 import {VemLista} from "../VemLista"
+import {Botao} from '../Botao'
 
 export function FormularioDeEvento () {
   return (
@@ -26,8 +27,14 @@ export function FormularioDeEvento () {
       </CampoDeFormulario>
       <CampoDeFormulario>
         <Label htmlFor="">Qual é  o nome do evento?</Label>
-        <VemLista/> 
+        <VemLista/>
       </CampoDeFormulario>
+      </div>
+
+      <div className='acoes'>
+        <Botao>
+          Criar evento
+        </Botao>
       </div>
     </form>
   )
