@@ -18,3 +18,15 @@ header{
   max-width: 90%;
   margin: 64px auto;
 }
+
+.container{
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.eventos{
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap; 
+}

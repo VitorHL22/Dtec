@@ -1,29 +1,30 @@
-const API_URL = "http://localhost:3000/usuarios";
+const API_URL = "http://localhost:3002/usuarios";
 
 // Seleção de elementos do HTML
-const userCardContainer = document.getElementById('user-cards-container')
-const addUserForm = document.getElementById('addUserForm')
-const btnListUsers = document.getElementById('btnListUsers')
+const userCardContainer = document.getElementById('user-cards-container');
+const addUserForm = document.getElementById('addUserForm');
+const btnListUsers = document.getElementById('btnListUsers');
 
-// modal
-const editModal = document.getElementById('editModal')
-const editUserForm = document.getElementById('editUserForm')
-const btnCancelEdit = document.getElementById('btnCancelEdit')
-const editNameInput = document.getElementById('editName')
-const editAgeInput = document.getElementById('editAge')
-const editIdInput = document.getElementById('iditId') // hidden input
+// Modal
+const editModal = document.getElementById('editModal');
+const editUserForm = document.getElementById('editUserForm');
+const btnCancelEdit = document.getElementById('btnCancelEdit');
+const editNameInput = document.getElementById('editName');
+const editAgeInput = document.getElementById('editAge');
+const editIdInput = document.getElementById('editId'); // ✅ corrigido
 
-
+// Buscar e renderizar usuários
 function fetchAndRenderUsers() {
     fetch(API_URL)
         .then(response => response.json())
         .then(users => renderUsers(users))
         .catch(error => {
             console.error("Erro ao buscar usuários", error);
-            userCardContainer.innerHTML = `<p> Erro ao carregar usuários</p>`
-        })
+            userCardContainer.innerHTML = `<p>Erro ao carregar usuários</p>`;
+        });
 }
 
+// Adicionar usuário
 function addUser(userData) {
     fetch(API_URL, {
         method: 'POST',
@@ -43,7 +44,7 @@ function editUser(userId, userData) {
     console.log("Editando:", userId, userData);
 
     fetch(`${API_URL}/${userId}`, {
-        method: 'PATCH',
+        method: 'PUT', // ✅ corrigido para PUT
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData)
     })
@@ -66,14 +67,15 @@ function editUser(userId, userData) {
 function deleteUser(userId) {
     fetch(`${API_URL}/${userId}`, { method: 'DELETE' })
         .then(() => fetchAndRenderUsers())
-        .catch(error => console.error('Erro ao excluir usuário', error))
+        .catch(error => console.error('Erro ao excluir usuário', error));
 }
 
+// Renderizar cards de usuários
 function renderUsers(users) {
     userCardContainer.innerHTML = "";
 
     if (users.length === 0) {
-        userCardContainer.innerHTML = `<p> Nenhum usuário cadastrado</p>`
+        userCardContainer.innerHTML = `<p>Nenhum usuário cadastrado</p>`;
         return;
     }
 
@@ -82,7 +84,7 @@ function renderUsers(users) {
         userCard.className = 'user-card';
         userCard.innerHTML = `
             <div class="user-info">
-                <p><strong>ID:</strong> ${user.id}</p>
+                <p><strong>ID:</strong> ${user._id}</p>  <!-- ✅ corrigido -->
                 <p><strong>Nome:</strong> ${user.nome}</p>
                 <p><strong>Idade:</strong> ${user.idade}</p>
             </div>
@@ -95,18 +97,18 @@ function renderUsers(users) {
         const editBtn = userCard.querySelector('.btn-edit');
         const deleteBtn = userCard.querySelector('.btn-delete');
 
-        // abrir modal de edição
+        // Abrir modal de edição
         editBtn.addEventListener('click', () => {
-            editIdInput.value = user.id;
+            editIdInput.value = user._id; // ✅ corrigido
             editNameInput.value = user.nome;
             editAgeInput.value = user.idade;
             editModal.style.display = 'flex';
         });
 
-        // excluir
+        // Excluir
         deleteBtn.addEventListener('click', () => {
-            if (confirm(`Tem certeza que deseja excluir o usuário ${user.id}?`)) {
-                deleteUser(user.id)
+            if (confirm(`Tem certeza que deseja excluir o usuário ${user.nome}?`)) {
+                deleteUser(user._id); // ✅ corrigido
             }
         });
 
@@ -115,38 +117,38 @@ function renderUsers(users) {
 }
 
 // Eventos
-btnListUsers.addEventListener('click', fetchAndRenderUsers)
+btnListUsers.addEventListener('click', fetchAndRenderUsers);
 
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const newUserName = document.getElementById('addName').value
-    const newUserAge = parseInt(document.getElementById('addAge').value)
+    const newUserName = document.getElementById('addName').value;
+    const newUserAge = parseInt(document.getElementById('addAge').value);
 
-    addUser({ nome: newUserName, idade: newUserAge })
-})
+    addUser({ nome: newUserName, idade: newUserAge });
+});
 
 editUserForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const userId = parseInt(editIdInput.value);
+    const userId = editIdInput.value; // ✅ não usa parseInt
     const newName = editNameInput.value;
     const newAge = parseInt(editAgeInput.value);
 
     console.log("Form enviado:", { userId, newName, newAge });
 
     editUser(userId, { nome: newName, idade: newAge });
-})
+});
 
 btnCancelEdit.addEventListener('click', () => {
-    editModal.style.display = 'none'
-})
+    editModal.style.display = 'none';
+});
 
 window.addEventListener('click', (e) => {
     if (e.target === editModal) {
-        editModal.style.display = 'none'
+        editModal.style.display = 'none';
     }
-})
+});
 
-// carregar lista ao abrir
-fetchAndRenderUsers()
+// Carregar lista ao abrir
+fetchAndRenderUsers();

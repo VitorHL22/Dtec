@@ -1,50 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-        <h1>Gerenciamento de Usuarios</h1>
-        <p>Clique em "Listar Usuários" para carregar os dados</p>
+        <h1>Gerenciamento de Pessoas</h1>
+        <p>Clique em "Listar Pessoas" para carregar os dados</p>
 
         <div class="header-buttons">
+            <button id="btnRegisterModal" class="btn-action">Criar Conta</button>
+            <button id="btnLoginModal" class="btn-action">Login</button>
             <button id="btnListUsers">Listar Usuários</button>
+            <p id="adminStatusAuth" class="auth-status"></p>
         </div>
 
         <div id="user-cards-container" class="cards-grid">
-            
+
         </div>
 
-        <h2>Adicionar Novo Usuário</h2>
+        <h2>Adicionar Novo Cadastro</h2>
         <form id="addUserForm" class="add-user-form">
             <input type="text" id="addName" placeholder="Nome do Usuário" required>
             <input type="number" id="addAge" placeholder="Idade" required>
-            <button type="submit">Adicionar Usuário</button>
+            <button type="submit">Adicionar</button>
         </form>
     </div>
 
     <div>
         <div id="editModal" class="modal">
             <div class="modal-content">
-                <h2>Editar Usuário</h2>
+                <h2>Editar</h2>
                 <form id="editUserForm">
-                    <input type="hidden" id="iditId">
+                    <input type="hidden" id="editId">
                     <label for="editName">Nome:</label>
                     <input type="text" id="editName" required>
                     <label for="editAge">Idade:</label>
                     <input type="number" id="editAge" required>
                     <div class="modal-buttons">
-                        <button  type="submit" class="btn-save">Salvar</button>
-                        <button  type="button" class="btn-cancel" id="btnCancelEdit">Cancelar</button>
+                        <button type="submit" class="btn-save">Salvar</button>
+                        <button type="button" class="btn-cancel" id="btnCancelEdit">Cancelar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Login</h2>
+            <form id="adminLoginForm">
+                <label for="adminUserName">Nome De Usuário:</label>
+                <input type="text" id="adminUserName" required>
+                <label for="adminPassword">Senha:</label>
+                <input type="text" id="adminPassword">
+
+                <div class="modal-buttons">
+                    <button class="btn-save">Entrar</button>
+                    <button class="btn-cancel" id="btnCancelLogin">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h2>Criar Conta</h2>
+            <form action="" id="adminRegisterForm">
+                <p id="adminRegisterstatus" class="auth-status"></p>
+                <label for="regUsername">Nome do Usuário</label>
+                <input type="text" id="regUsername" required>
+                <label for="regPassword">Senha:</label>
+                <input type="password" id="regPassword" required>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-save">Criar</button>
+                    <button type="button" class="btn-calcel" id="btnCalcelregister">Cancelar2</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>

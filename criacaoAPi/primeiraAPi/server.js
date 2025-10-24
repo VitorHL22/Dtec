@@ -1,110 +1,161 @@
+// CARREGAR VARIÁVEIS DE AMBIENTE
 require('dotenv').config()
-//Importação do Express
-const express = require('express')
-//Importação do cors
+
+// Importando o express e dependências
+const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
-//Iniciar o MOngoose pacote
-const mongoose= require('mongoose');
+const PORT = process.env.PORT || 3000;
+const mongoURI = process.env.MONGO_URI;
 
-const mongoURI= process.env.MONGO_URI
-
+// CONEXÃO MONGODB
 mongoose.connect(mongoURI)
-    .then(() => console.log("Conectado ao mongoDB"))
-    .catch(err => console.error("Erro de conexão", err))
+  .then(() => console.log("Conectado ao MongoDb Atlas"))
+  .catch(error => {
+    console.error("Falha na Conexão ao MongoDB", error.message);
+    process.exit(1);
+  });
 
-//Criar a aplicação
-const app = express();  
-        
-//Permitir trabalhar com JSON
+// ESTRUTURA DO DOCUMENTO (SCHEMA)
+const usuarioSchema = new mongoose.Schema(
+  {
+    nome: { type: String, required: true },
+    idade: { type: Number, required: true }
+  },
+  { timestamps: true }
+);
+
+// MODELO E COLLECTION
+const Usuario = mongoose.model('Usuario', usuarioSchema);
+
+// CRIANDO APLICAÇÃO EXPRESS
+const app = express();
+
+// CONFIGURAÇÕES
 app.use(express.json());
-//Permitir trabalhar com cors
-app.use(cors())
+app.use(cors());
 
-//Permitir trabalhar com Json
-app.use(express.json());
-
-//Porta onde a APi vai rodar
-const PORT = 3000;
-
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`)
-})
-
-let usuarios = [
-    {id: 1, nome: "Bluezao", idade: 25},
-    {id: 2, nome: "Diogo", idade: 34},
-    {id: 3, nome: "Davi Brito", idade: 24},
-    {id: 4, nome: "Thiago tung sahur", idade: 26},
-    {id: 5, nome: "Micael Brito", idade: 30}
-
-]
-
-app.get('/',(require,response) => {
-    response.send("TESTE");
-})
-app.get('/usuarios',(require,response) => {
-    response.json(usuarios)
-})
-app.get('/usuarios/:id', (require, response) => {
-    const id = require.params.id;
-    const usuario = usuarios.find(u => u.id ==id);
-    if(usuario){
-        response.json(usuario)
-    }else{
-        response.status(404).strictContentLength({mensagem: "Usuário Não Encontrado"})
-    }
-
-})
-
-app.get('/usuarios/nome/:nome',(require, response) => {
-    const nomezin = require.params.nome.toLowerCase();
-    const result = usuarios.filter(user => user.nome.toLowerCase().includes(nomezin))
-    if(result.length > 0){
-        response.json(result)
-    }else{
-        response.status(404).json({mensagem: "Usuário Não Encontrado"})
-    }
-})
-
-app.delete('/usuarios/:id',(require, response) => {
-    const id = require.params.id
-    usuarios = usuarios.filter(u => u.id != id);
-
-    response.json({mensagem: "Usuário removido com sucesso!"})
-})
-
-app.post('/usuarios', (require, response) => {
-    const ultimoId = usuarios.reduce((max, usuario) => Math.max(max, usuario.id), 0)
-    const novo = {
-        id: ultimoId + 1,
-        nome: require.body.nome,
-        idade: require.body.idade
-    };
-    usuarios.push(novo)
-    response.status(201).json(novo);
-})
-app.get('/usuarios/idade/:idade', (require, response) => {
-    const idade = parseInt(require.params.idade);
-    const resultado = usuarios.filter(user => user.idade === idade);
-    
-    if (resultado.length > 0) {
-        response.json(resultado);
-    } else {
-        response.status(404).json({ mensagem: "usuário não encontrado" });
-    }
+// ROTAS BÁSICAS
+app.get('/', (req, res) => {
+  res.send("PÁGINA INICIAL");
 });
 
-app.put('/usuarios/:id' ,(require, response) => {
-    const ide = require.params.id
-    const nome = require.body.nome
-    const idade = require.body.idade
-    const maninho = usuarios.find(obj =>  obj.id == id)
+// LISTAR TODOS
+app.get('/usuarios', async (req, res) => {
+  try {
+    const usuarios = await Usuario.find({});
+    res.json(usuarios);
+  } catch (error) {
+    res.status(500).json({ mensagem: "Erro ao buscar usuários", erro: error.message });
+  }
+});
 
-    if (!maninho) {
-        return response.status(404).json({mensagem: "Usuário não encontrado"})
-    } 
-    maninho.nome = nome || maninho.nome
-    maninho.idade = idade || maninho.idade
-    response.json(maninho)
-})
+// BUSCAR POR ID
+app.get('/usuarios/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const usuario = await Usuario.findById(id);
+
+    if (usuario) {
+      res.json(usuario);
+    } else {
+      res.status(404).json({ mensagem: "Usuário Não encontrado" });
+    }
+  } catch (error) {
+    res.status(400).json({ mensagem: "Erro de Servidor", erro: error.message });
+  }
+});
+
+// BUSCAR POR NOME
+app.get('/usuarios/nome/:nome', async (req, res) => {
+  try {
+    const buscaNome = req.params.nome;
+    const resultados = await Usuario.find({
+      nome: { $regex: buscaNome, $options: 'i' }
+    });
+
+    if (resultados.length > 0) {
+      res.json(resultados);
+    } else {
+      res.status(404).json({ mensagem: "Usuário Não Encontrado" });
+    }
+  } catch (error) {
+    console.error("Erro na busca", error);
+    res.status(500).json({ mensagem: "Erro no servidor", erro: error.message });
+  }
+});
+
+// BUSCAR POR IDADE
+app.get('/usuarios/idade/:idade', async (req, res) => {
+  try {
+    const buscaIdade = req.params.idade;
+    const resultados = await Usuario.find({ idade: buscaIdade });
+
+    if (resultados.length > 0) {
+      res.json(resultados);
+    } else {
+      res.status(404).json({ mensagem: "Usuário Não Encontrado" });
+    }
+  } catch (error) {
+    console.error("Erro na busca", error);
+    res.status(500).json({ mensagem: "Erro no servidor", erro: error.message });
+  }
+});
+
+// DELETAR USUÁRIO
+app.delete('/usuarios/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const usuarioDeletado = await Usuario.findByIdAndDelete(id);
+
+    if (!usuarioDeletado) {
+      return res.status(404).json({ mensagem: "Usuário Não Encontrado" });
+    }
+
+    res.json({ mensagem: "Usuário deletado", usuario: usuarioDeletado });
+  } catch (error) {
+    res.status(400).json({ mensagem: "Erro ao deletar", erro: error.message });
+  }
+});
+
+// CRIAR USUÁRIO (POST)
+app.post('/usuarios', async (req, res) => {
+  try {
+    const novoUsuario = await Usuario.create({
+      nome: req.body.nome,
+      idade: req.body.idade
+    });
+    res.status(201).json(novoUsuario);
+  } catch (error) {
+    res.status(400).json({ mensagem: "Dados Inválidos ou Erro ao salvar", erro: error.message });
+  }
+});
+
+// ATUALIZAR USUÁRIO (PUT)
+app.put('/usuarios/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const nome = req.body.nome;
+    const idade = req.body.idade;
+
+    const usuarioAtualizado = await Usuario.findByIdAndUpdate(
+      id,
+      { nome, idade },
+      { new: true, runValidators: true }
+    );
+
+    if (!usuarioAtualizado) {
+      return res.status(404).json({ mensagem: "Usuário Não Encontrado" });
+    }
+
+    res.json(usuarioAtualizado);
+  } catch (error) {
+    res.status(400).json({ mensagem: "Erro ao atualizar", erro: error.message });
+  }
+});
+
+// INICIAR SERVIDOR
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
