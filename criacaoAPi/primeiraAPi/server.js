@@ -179,6 +179,26 @@ app.post('/api/register-admin', async (req,res) => {
   }
 })
 
+//Rota de Login 
+
+app.post('api/login-admin', async (req, res) => {
+  const {email, password } = req.body
+  try {
+     const user = await User.findOne({email}).select('+password');
+     if(user && (await user.matchPassword(password))) {
+      res.json({
+        email: user.email,
+        token: generateToken(user._id),
+        mensagem: "Login Realizado"
+      })
+     } else {
+      res.status(401).json({mensagem: "Credencial Inválida"})
+     }
+  }catch(error) {
+    res.status(500).json({mensagem: "Erro de Login", erro: error.message})
+  }
+})
+
 //Inicia o servidor
 app.listen(PORT, () => {
     console.log(`Servidor na porta ${PORT}`)
