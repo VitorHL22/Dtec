@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EcoDenúncia - Descarte Inadequado de Resíduos</title>
-    <link rel="stylesheet" href="denuncia.css" />
+    <link rel="stylesheet" href="denucias.css" />
     <link rel="shortcut icon" href="../LogoEIcon/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&display=swap"
         rel="stylesheet">
@@ -15,7 +15,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="/LogoEIcon/logorecicle.png" alt="Logo Denuncicle">
+            <img src="../LogoEIcon/logorecicle.png" alt="Logo Denuncicle">
         </div>
 
         <nav class="menu">
@@ -32,13 +32,14 @@
             <p>Ajude a manter nossa cidade limpa. Sua denúncia é anônima e fundamental.</p>
         </section>
 
-        <form class="form-denuncia">
+        <!-- 🟢 Formulário corrigido -->
+        <form class="form-denuncia" enctype="multipart/form-data">
             <div class="form-grid">
                 <label>
                     <p>Localização do Incidente</p>
                     <div class="input-icon">
                         <span class="material-symbols-outlined">location_on</span>
-                        <input type="text" placeholder="Digite o endereço ou use a localização atual" />
+                        <input type="text" name="local" placeholder="Digite o endereço ou use a localização atual" />
                     </div>
                 </label>
 
@@ -46,7 +47,7 @@
                     <p>Tipo de Resíduo</p>
                     <div class="input-icon">
                         <span class="material-symbols-outlined">compost</span>
-                        <select>
+                        <select name="tipo">
                             <option value="">Selecione o tipo de resíduo</option>
                             <option value="domestico">Lixo Doméstico</option>
                             <option value="construcao">Entulho de Construção</option>
@@ -59,7 +60,8 @@
 
             <label class="descricao">
                 <p>Descrição Detalhada</p>
-                <textarea placeholder="Descreva o incidente com o máximo de detalhes possível"></textarea>
+                <textarea name="descricao"
+                    placeholder="Descreva o incidente com o máximo de detalhes possível"></textarea>
             </label>
 
             <div class="upload">
@@ -68,7 +70,7 @@
                     <span class="material-symbols-outlined">cloud_upload</span>
                     <p>Arraste e solte as imagens aqui ou</p>
                     <label for="file-upload">clique para selecionar</label>
-                    <input type="file" id="file-upload" multiple accept="image/*" />
+                    <input type="file" id="file-upload" name="imagens" multiple accept="image/*" />
                     <p class="info">PNG, JPG, GIF até 10MB</p>
                 </div>
             </div>
@@ -81,6 +83,28 @@
             </div>
         </form>
     </main>
+
+    <!-- 🟢 Script de envio -->
+    <script>
+        document.querySelector(".form-denuncia").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+
+            const response = await fetch("http://localhost:3001/denuncias", {
+                method: "POST",
+                body: formData
+            });
+
+            if (response.ok) {
+                alert("✅ Denúncia enviada com sucesso!");
+                e.target.reset();
+            } else {
+                alert("❌ Erro ao enviar denúncia!");
+            }
+        });
+    </script>
+
 </body>
 
 </html>

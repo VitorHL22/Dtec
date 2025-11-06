@@ -13,7 +13,7 @@ const jwt = require('jsonwebtoken')
 const Pessoa = require ('./models/Pessoa')
 const User = require ('./models/User')
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3009;
 const mongoURI = process.env.MONGO_URI;
 const JWT_SECRET = process.env.JWT_SECRET
 

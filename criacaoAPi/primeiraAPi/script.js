@@ -13,6 +13,22 @@ const editNameInput = document.getElementById('editName');
 const editAgeInput = document.getElementById('editAge');
 const editIdInput = document.getElementById('editId'); // ✅ corrigido
 
+//Seleção de elementos no html
+const loginModal = document.getElementById('loginModal')
+const btnLoginModal = document.getElementById('btnLoginModal')
+const btnCancelLogin = document.getElementById('btncalcelLogin')
+const adminLoginForm = document.getElementById('adminLoginForm')
+const adminAuthStatus = document.getElementById('adminAuthStatus')
+
+//Seleção de Elementos MODAL DE REGISTRO
+
+const registerModal = document.getElementById('registerModal')
+const btnRegisterModal = document.getElementById('btnRegisterModal')
+const bntCalcelRegister = document.getElementById('bntCalcelRegister')
+const adminRegisterForm = document.getElementById('adminRegisterForm')
+const adminRegisterStatus = document.getElementById('adminRegisterStatus')
+
+
 // Buscar e renderizar usuários
 function fetchAndRenderUsers() {
     fetch(API_URL)
@@ -68,6 +84,32 @@ function deleteUser(userId) {
     fetch(`${API_URL}/${userId}`, { method: 'DELETE' })
         .then(() => fetchAndRenderUsers())
         .catch(error => console.error('Erro ao excluir usuário', error));
+}
+//Função para criar conta - Registrar adm 
+function handleAdminRegister(email, password) {
+    adminRegisterStatus.textContent =  "Registrando...";
+    adminRegisterStatus.style.color = "blue";
+
+    fetch('http//localhost:30020/api/register-admin', {
+        method: 'POST', 
+        headers: {'Content-type': 'application/json'},
+        body: JSON.stringify({email, password})
+    })
+    .then(responnse => response.json())
+    .then(data => {
+        if (data.mensagem && data.mensagem.includes('sucesso')) {
+            adminRegisterStatus.style.color = "green";
+            adminRegisterStatus.textContent = "Conta criada com sucesso"
+            setTimeout(() => {
+                registerModal.style.display = 'none';
+                document.getElementById('regUsername').value = ''
+                document.getElementById('regPassword').value = ''
+            }, 2000)
+        }else{
+            adminRegisterStatus.style.color = "Red"
+            adminRegisterStatus.textContent = data.mensagem
+        }
+    })
 }
 
 // Renderizar cards de usuários
