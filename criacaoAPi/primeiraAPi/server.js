@@ -119,7 +119,7 @@ app.get('/usuarios/idade/:idade', async (req,res) => {
   }
 })
 
-app.delete('/usuarios/:id', async (req, res) => {
+app.delete('/usuarios/:id',  protect, async (req, res) => {
   try {
     const id = req.params.id;
     const usuarioDeletado = await Pessoa.findByIdAndDelete(id);
