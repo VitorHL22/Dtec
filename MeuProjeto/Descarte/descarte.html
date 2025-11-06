@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Site de Descarte de Resíduos</title>
+  <link rel="stylesheet" href="descarte.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="../LogoEIcon/logorecicle.png" alt="">
+    </div>
+
+    <nav class="navlinks">
+      <a href="#inicio">Início</a>
+      <a href="#guia">Guia de Separação</a>
+      <a href="texte.html">Pontos de Coleta</a>
+      <a href="sobre.html">Contato</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button id="openLogin" class="btn-outline">Login</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio" aria-label="Hero">
+    <div class="hero-inner">
+      <h1>Separe seu lixo, transforme o futuro</h1>
+      <p>Um guia completo sobre a importância da reciclagem e como fazer a sua parte.</p>
+      <div class="hero-cta">
+        <button id="saibaMais" class="btn-primary">Saiba Mais</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIA -->
+  <section class="guia" id="guia">
+    <h2>Guia Completo de Separação de Resíduos</h2>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-filter="plastico" role="tab">Plástico</button>
+      <button class="tab" data-filter="papel" role="tab">Papel</button>
+      <button class="tab" data-filter="vidro" role="tab">Vidro</button>
+      <button class="tab" data-filter="metal" role="tab">Metal</button>
+      <button class="tab" data-filter="organico" role="tab">Orgânico</button>
+      <button class="tab" data-filter="especiais" role="tab">Especiais</button>
+    </div>
+
+    <div class="cards" id="cardsGrid">
+      <!-- Card template items with data-type for filtering -->
+      <article class="card" data-type="plastico">
+        <div class="card-media">
+          <img src="../Imagens/conjunto-de-vetores-lixo-de-plastico-e-residuos-ou-lixo-conceito-de-residuos-zero_74565-386.jpg" alt="Plásticos">
+        </div>
+        <div class="card-body">
+          <h3>Plásticos</h3>
+          <p>Garrafas PET, embalagens de produtos de limpeza, potes e outros. Lave as embalagens e verifique quais plásticos são recicláveis.</p>
+        </div>
+      </article>
+
+      <article class="card" data-type="papel">
+        <div class="card-media">
+          <img src="../Imagens/recolha-de-residuos-de-papel-em-um-fundo-branco-jornais-caixas-cadernos-livros-e-outras-porcarias-produtos-de-papel-reciclado-ilustracao-em-vetor-lixo-papel-reciclavel_281155-386.jpg" alt="Papel">
+        </div>
+        <div class="card-body">
+          <h3>Papel</h3>
+          <p>Jornais, caixas de papelão, revistas. Não amasse o papel e evite papéis sujos de gordura.</p>
+        </div>
+      </article>
+
+      <article class="card" data-type="vidro">
+        <div class="card-media">
+          <img src="../Imagens/recolha-de-residuos-de-vidro-em-um-fundo-branco-garrafas-copos-vasos-e-outro-lixo-produtos-de-vidro-ilustracao-em-vetor-lixo-reciclavel-de-vidro_281155-388.jpg" alt="Vidro">
+        </div>
+        <div class="card-body">
+          <h3>Vidro</h3>
+          <p>Garrafas, potes de conserva. Cuidado ao manusear. Não inclua espelhos ou lâmpadas.</p>
+        </div>
+      </article>
+
+      <article class="card" data-type="metal">
+        <div class="card-media">
+          <img src="../Imagens/conceito-de-reciclagem-plana-lay_23-2148834480.jpg" alt="Metal">
+        </div>
+        <div class="card-body">
+          <h3>Metal</h3>
+          <p>Latas de alumínio e aço. Amassar as latinhas ajuda a otimizar o espaço.</p>
+        </div>
+      </article>
+
+      <article class="card" data-type="organico">
+        <div class="card-media">
+          <img src="../Imagens/desenho-plano-desenhado-a-mao-coleta-zero-de-residuos_23-2149209087.jpg" alt="Orgânico">
+        </div>
+        <div class="card-body">
+          <h3>Orgânico</h3>
+          <p>Restos de frutas, verduras, cascas de ovo. Considere a compostagem doméstica.</p>
+        </div>
+      </article>
+
+      <article class="card" data-type="especiais">
+        <div class="card-media">
+          <img src="../Imagens/ChatGPT Image 30 de out. de 2025, 15_36_22.png" alt="Resíduos Especiais">
+        </div>
+        <div class="card-body">
+          <h3>Resíduos Especiais</h3>
+          <p>Pilhas, baterias, eletrônicos, óleo de cozinha. Descarte em locais específicos.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- DICAS -->
+  <section class="dicas" id="dicas">
+    <h2>Dicas Gerais para um Descarte Consciente</h2>
+    <div class="tips-grid">
+      <div class="tip">
+        <h4>Lave as Embalagens</h4>
+        <p>Remover restos de alimentos ajuda a evitar mau cheiro e a contaminação de outros recicláveis.</p>
+      </div>
+      <div class="tip">
+        <h4>Separe em Sacos Diferentes</h4>
+        <p>Utilize sacos ou contêineres de cores diferentes para facilitar a identificação na coleta seletiva.</p>
+      </div>
+      <div class="tip">
+        <h4>Conheça a Coleta Seletiva</h4>
+        <p>Informe-se sobre os dias e horários da coleta seletiva no seu bairro para garantir que seus resíduos sejam recolhidos.</p>
+      </div>
+      <div class="tip">
+        <h4>Remova Tampas e Rótulos</h4>
+        <p>Sempre que possível, remova tampas e rótulos plásticos das embalagens, pois são de tipos diferentes de plástico.</p>
+      </div>
+    </div>
+
+    <div class="center">
+      <button id="openPoints" class="btn-primary">Encontre Pontos de Coleta</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contato">
+    <div class="footer-wrap">
+      <div class="footer-col">
+        <h4>Site de Descarte de Resíduos</h4>
+        <p>Promovendo a sustentabilidade através da educação ambiental.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#guia">Guia de Separação</a></li>
+          <li><a href="#dicas">Pontos de Coleta</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p>contato@sitederesiduos.com<br />(11) 99999-9999</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Siga-nos</h4>
+        <div class="socials">
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📸</a>
+        </div>
+      </div>
+    </div>
+    <div class="copy">© 2024 Site de Descarte de Resíduos. Todos os direitos reservados.</div>
+  </footer>
+
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="loginTitle">
+    <div class="modal-panel">
+      <button class="modal-close" id="closeLogin" aria-label="Fechar">&times;</button>
+      <h3 id="loginTitle">Login</h3>
+      <form id="loginForm">
+        <label class="sr-only" for="user">Usuário</label>
+        <input id="user" name="user" type="text" placeholder="Usuário" required />
+        <label class="sr-only" for="pass">Senha</label>
+        <input id="pass" name="pass" type="password" placeholder="Senha" required minlength="4" />
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Entrar</button>
+          <button type="button" class="btn-outline" id="cancelLogin">Cancelar</button>
+        </div>
+        <p id="loginMsg" class="muted"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- PONTOS DE COLETA MODAL -->
+  <div id="pointsModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="pointsTitle">
+    <div class="modal-panel large">
+      <button class="modal-close" id="closePoints" aria-label="Fechar">&times;</button>
+      <h3 id="pointsTitle">Pontos de Coleta Próximos</h3>
+      <div class="points-grid">
+        <div class="point">
+          <h4>Centro de Coleta Bairro Verde</h4>
+          <p>Rua das Flores, 123 — Segunda a Sexta, 8h–17h</p>
+        </div>
+        <div class="point">
+          <h4>Ponto Comunitário Praça Central</h4>
+          <p>Praça Central — Sábados, 9h–12h</p>
+        </div>
+        <div class="point">
+          <h4>EcoPonto Shopping Norte</h4>
+          <p>Av. Principal, 456 — Todos os dias, 10h–22h</p>
+        </div>
+      </div>
+
+      <div class="mapwrap">
+        <!-- busca geral por 'pontos de coleta seletiva' -->
+        <iframe
+          src="https://www.google.com/maps?q=pontos+de+coleta+seletiva&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa de Pontos de Coleta"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="descarte.js"></script>
+</body>
+</html>

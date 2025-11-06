@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descarte Consciente</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+    }
+    header {
+      background-color: #00695c;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+    }
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-height: 300px;
+    }
+    .carousel img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: none;
+    }
+    .carousel img.active {
+      display: block;
+    }
+    .denuncias {
+      padding: 30px;
+    }
+    .denuncia-card {
+      background: white;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+    }
+    .denuncia-card h4 {
+      margin: 0;
+      color: #00695c;
+    }
+    footer {
+      background-color: #004d40;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Descarte Consciente</h1>
+    <p>Transforme denúncias em ações por um planeta mais limpo 🌱</p>
+  </header>
+
+  <section class="carousel">
+    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" class="active">
+    <img src="https://images.unsplash.com/photo-1565372918679-95b0aa4602b1">
+    <img src="https://images.unsplash.com/photo-1532634726-8b9fb99825c7">
+  </section>
+
+  <section class="denuncias">
+    <h2>Últimas Denúncias</h2>
+    <div id="lista-denuncias">Carregando...</div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Descarte Consciente | Desenvolvido por você 💚</p>
+  </footer>
+
+  <script>
+    // Carrossel automático
+    const slides = document.querySelectorAll('.carousel img');
+    let index = 0;
+    setInterval(() => {
+      slides[index].classList.remove('active');
+      index = (index + 1) % slides.length;
+      slides[index].classList.add('active');
+    }, 4000);
+
+    // Carregar últimas denúncias
+    async function carregarDenuncias() {
+      try {
+        const resposta = await fetch('http://localhost:3001/denuncias');
+        const denuncias = await resposta.json();
+        const lista = document.getElementById('lista-denuncias');
+
+        if (denuncias.length === 0) {
+          lista.innerHTML = "<p>Nenhuma denúncia registrada ainda.</p>";
+          return;
+        }
+
+        // Pegar as 3 mais recentes
+        const ultimas = denuncias.slice(-3).reverse();
+        lista.innerHTML = ultimas.map(d => `
+          <div class="denuncia-card">
+            <h4>${d.titulo || "Denúncia sem título"}</h4>
+            <p><strong>Local:</strong> ${d.local || "Não informado"}</p>
+            <p>${d.descricao || "Sem descrição"}</p>
+          </div>
+        `).join('');
+      } catch (erro) {
+        document.getElementById('lista-denuncias').innerHTML =
+          "<p>Erro ao carregar denúncias.</p>";
+        console.error(erro);
+      }
+    }
+
+    carregarDenuncias();
+  </script>
+</body>
+</html>

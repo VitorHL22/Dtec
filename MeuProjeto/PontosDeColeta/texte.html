@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Site de Descarte de Resíduos - Corrigido</title>
+  <link rel="shortcut icon" href="/LogoEIcon/favicon.ico">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header>
+    <div class="brand">
+      <img src="../LogoEIcon/logorecicle.png" alt="">
+    </div>
+    <nav style="margin-left:auto;display:flex;gap:20px;color:var(--muted);align-items:center">
+      <a href="">Inicio</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="index.html">Denúncia</a>
+      <a href="descarte.html">Descarte</a>
+      <a href="texte.html">Pontos De Coleta</a>
+    </nav>
+  </header>
+
+  <main class="app">
+    <aside class="sidebar" id="sidebar">
+      <h3>Filtre sua Busca</h3>
+      <div class="muted">Refine sua busca para encontrar o ponto de coleta ideal.</div>
+
+      <div class="field">
+        <label style="font-weight:600">Localização</label>
+        <div class="search" style="margin-top:8px">
+          <input id="addressInput" placeholder="Buscar por endereço, CEP..." />
+          <button id="btnSearch" title="Buscar"
+            style="padding:9px 10px;border-radius:10px;border:none;background:var(--accent);color:white;cursor:pointer">🔎</button>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-top:8px">Clique em um marcador para mais detalhes.</div>
+      </div>
+
+      <div class="field">
+        <label style="font-weight:600">Tipo de Resíduo</label>
+        <div class="types" id="typeFilters" style="margin-top:10px"></div>
+      </div>
+
+      <div class="field">
+        <div class="radius-row">
+          <label style="font-weight:600">Raio de Distância</label>
+          <div id="radiusLabel">10 km</div>
+        </div>
+        <input type="range" id="radiusRange" min="1" max="50" value="10" class="range" />
+      </div>
+
+      <button class="btn btn-apply" id="applyFilters">Aplicar Filtros</button>
+      <button class="btn btn-clear" id="clearFilters">Limpar Filtros</button>
+    </aside>
+
+    <section class="content">
+      <div class="title-row">
+        <div>
+          <div class="title">Encontre Pontos de Coleta</div>
+          <div style="color:var(--muted);margin-top:6px">Mapa com pontos onde é possível descartar resíduos.</div>
+        </div>
+        <div class="view-toggle">
+          <button id="btnMap" class="active">🗺 Mapa</button>
+          <button id="btnList">📋 Lista</button>
+        </div>
+      </div>
+
+      <div id="mapbox">
+        <div class="badge" id="countBadge">Exibindo 0 pontos de coleta na sua área.</div>
+        <div id="map"></div>
+        <div class="map-overlay-list" id="mapControls" style="display:none"></div>
+      </div>
+
+      <div id="listView" style="display:none">
+        <div class="list-panel" id="listPanel"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Site de Descarte de Resíduos. Todos os direitos reservados.</footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Script externo -->
+  <script src="script.js"></script>
+</body>
+
+</html>
