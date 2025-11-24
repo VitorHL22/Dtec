@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Descarte Consciente</title>
+    <link rel="stylesheet" href="Login.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logorecicle.png" alt="Ícone Reciclagem" />
+        </div>
+
+
+        <div class="card">
+            <h1>Bem-vindo de volta!</h1>
+            <p class="subtitulo">Entre com suas credenciais para continuar</p>
+
+
+            <form id="loginForm">
+                <label for="email">E-mail</label>
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="seuemail@exemplo.com" required />
+                </div>
+
+
+                <label for="senha">Senha</label>
+                <div class="input-group">
+                    <input type="password" id="senha" placeholder="********" required />
+                </div>
+
+
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+
+
+            <p class="login">
+                Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
+            </p>
+
+
+            <p id="mensagem"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
